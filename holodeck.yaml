@@ -1,0 +1,4 @@
+version: 1
+suite:
+  name: i18n
+  description: Internationalisation and localisation Trials
