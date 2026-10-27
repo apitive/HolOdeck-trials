@@ -1,3 +1,23 @@
 name: Internationalization - Introduce Thai language
 platform_type: WEB
 active: true
+validators:
+  - name: Page loads
+    type: PLAYWRIGHT_PYTHON
+    description: The app still opens without console or HTTP errors after Thai is added
+    checks:
+      - check: PAGE_LOADS
+
+  - name: Thai bundle loads
+    type: PLAYWRIGHT_PYTHON
+    description: With a Thai browser locale the app requests its Thai (th) message bundle and it loads
+    test_file: validators/test_thai_locale.py
+    tests: [test_thai_bundle_loads]
+    timeout_seconds: 120
+
+  - name: Thai text shown
+    type: PLAYWRIGHT_PYTHON
+    description: With a Thai browser locale the page shows Thai text
+    test_file: validators/test_thai_locale.py
+    tests: [test_thai_text_shown]
+    timeout_seconds: 120
